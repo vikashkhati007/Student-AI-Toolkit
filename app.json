@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Todo-App",
-    "slug": "Todo-App",
+    "name": "Ai Toolkit",
+    "slug": "ai-tools-apk",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -19,7 +19,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.aitool"
     },
     "web": {
       "bundler": "metro",
@@ -31,6 +32,12 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "2193f94a-c586-4fc8-993e-281dd1441586"
+      }
+    },
+    "owner": "vikashkhati007"
   }
 }
