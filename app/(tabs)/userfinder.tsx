@@ -40,11 +40,14 @@ const unlockScript = `
 export default function UserFinderBot() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <Tab.Navigator sceneContainerStyle={{ backgroundColor: "red" }}>
+      <Tab.Navigator>
         <Tab.Screen
           name="FireShip"
           children={() => (
-            <WebViewScreen url="https://fireship.io/courses/linux/" injectedscript={unlockScript} />
+            <WebViewScreen
+              url="https://fireship.io/courses"
+              injectedscript={unlockScript}
+            />
           )}
         />
       </Tab.Navigator>

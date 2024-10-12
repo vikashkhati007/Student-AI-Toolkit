@@ -2,8 +2,15 @@ import { Ionicons } from "@expo/vector-icons";
 import React, { useRef, useState } from "react";
 import { View, Pressable, StyleSheet } from "react-native";
 import { WebView } from "react-native-webview";
+import * as Linking from "expo-linking";
 
-const WebViewScreen = ({ url, injectedscript }: { url: string; injectedscript?: string }) => {
+const WebViewScreen = ({
+  url,
+  injectedscript,
+}: {
+  url: string;
+  injectedscript?: string;
+}) => {
   const webviewRef = useRef<any>(null);
   const [canGoBack, setCanGoBack] = useState(false);
 
@@ -25,6 +32,7 @@ const WebViewScreen = ({ url, injectedscript }: { url: string; injectedscript?: 
     webviewRef.current.injectJavaScript(injectedscript);
   };
 
+
   return (
     <View style={styles.container}>
       <WebView
@@ -33,8 +41,13 @@ const WebViewScreen = ({ url, injectedscript }: { url: string; injectedscript?: 
         onNavigationStateChange={handleNavigationStateChange}
         startInLoadingState
         onLoadEnd={handleLoadEnd} // Inject script after load ends
+        allowsFullscreenVideo
       />
-      <Pressable onPress={handleBackPress} disabled={!canGoBack} style={styles.backButton}>
+      <Pressable
+        onPress={handleBackPress}
+        disabled={!canGoBack}
+        style={styles.backButton}
+      >
         <Ionicons name="arrow-back" size={24} color="black" />
       </Pressable>
     </View>
@@ -46,11 +59,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   backButton: {
-    position: 'absolute',
+    position: "absolute",
     top: 40,
     left: 20,
     padding: 10,
-    backgroundColor: 'rgba(255,255,255,0.8)',
+    backgroundColor: "rgba(255,255,255,0.8)",
     borderRadius: 5,
   },
 });

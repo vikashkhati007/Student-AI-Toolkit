@@ -22,11 +22,20 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="userfinder"
+        name="videobot"
         options={{
           title: "",
           tabBarIcon: ({ color }) => (
             <Ionicons name="videocam" size={24} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="userfinder"
+        options={{
+          title: "",
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="flame-outline" size={24} color={color} />
           ),
         }}
       />
