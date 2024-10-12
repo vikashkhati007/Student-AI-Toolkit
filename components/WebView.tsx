@@ -1,10 +1,9 @@
-import { RightIcon } from "@/components/RightIcon";
+import { Ionicons } from "@expo/vector-icons";
 import React, { useRef, useState } from "react";
-import { View, Button, ActivityIndicator, Pressable, Text } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { View, Pressable, StyleSheet } from "react-native";
 import { WebView } from "react-native-webview";
 
-const WebViewScreen = ({ url }: any) => {
+const WebViewScreen = ({ url, injectedscript }: { url: string; injectedscript?: string }) => {
   const webviewRef = useRef<any>(null);
   const [canGoBack, setCanGoBack] = useState(false);
 
@@ -21,19 +20,39 @@ const WebViewScreen = ({ url }: any) => {
     }
   };
 
+  const handleLoadEnd = () => {
+    // Injecting script after page load
+    webviewRef.current.injectJavaScript(injectedscript);
+  };
+
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "black" }}>
+    <View style={styles.container}>
       <WebView
         ref={webviewRef}
         source={{ uri: url }}
         onNavigationStateChange={handleNavigationStateChange}
         startInLoadingState
+        onLoadEnd={handleLoadEnd} // Inject script after load ends
       />
-      <Pressable onPress={handleBackPress} disabled={!canGoBack}>
-        <Text>Go Back</Text>
+      <Pressable onPress={handleBackPress} disabled={!canGoBack} style={styles.backButton}>
+        <Ionicons name="arrow-back" size={24} color="black" />
       </Pressable>
-    </SafeAreaView>
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  backButton: {
+    position: 'absolute',
+    top: 40,
+    left: 20,
+    padding: 10,
+    backgroundColor: 'rgba(255,255,255,0.8)',
+    borderRadius: 5,
+  },
+});
 
 export default WebViewScreen;

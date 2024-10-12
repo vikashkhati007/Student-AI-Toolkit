@@ -1,27 +1,33 @@
 import { Tabs } from "expo-router";
-import { Image, Bot, UserRoundSearch } from "lucide-react";
+import { FontAwesome, Ionicons } from "@expo/vector-icons";
 export default function TabLayout() {
   return (
     <Tabs screenOptions={{ tabBarActiveTintColor: "blue", headerShown: false }}>
       <Tabs.Screen
-        name="chatbot"
+        name="index"
         options={{
           title: "",
-          tabBarIcon: ({ color }) => <Bot color={color} />,
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="chatbox" size={24} color={color} />
+          ),
         }}
       />
       <Tabs.Screen
         name="imagebot"
         options={{
           title: "",
-          tabBarIcon: ({ color }) => <Image color={color} />,
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="image" size={24} color={color} />
+          ),
         }}
       />
       <Tabs.Screen
         name="userfinder"
         options={{
           title: "",
-          tabBarIcon: ({ color }) => <UserRoundSearch color={color} />,
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="videocam" size={24} color={color} />
+          ),
         }}
       />
     </Tabs>
