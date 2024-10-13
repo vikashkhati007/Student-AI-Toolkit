@@ -32,7 +32,6 @@ const WebViewScreen = ({
     webviewRef.current.injectJavaScript(injectedscript);
   };
 
-
   return (
     <View style={styles.container}>
       <WebView
@@ -42,6 +41,8 @@ const WebViewScreen = ({
         startInLoadingState
         onLoadEnd={handleLoadEnd} // Inject script after load ends
         allowsFullscreenVideo
+        userAgent="Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; AS; rv:11.0) like Gecko"
+        originWhitelist={["https://*", "http://*", "file://*", "sms://*"]}
       />
       <Pressable
         onPress={handleBackPress}
