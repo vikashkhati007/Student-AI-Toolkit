@@ -60,6 +60,7 @@ export default function TabLayout() {
             ),
           }}
         />
+    
       </Tabs>
       {!menu ? (
           <View

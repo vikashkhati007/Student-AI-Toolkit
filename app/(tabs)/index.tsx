@@ -1,7 +1,8 @@
-import { Text, View } from "react-native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { SafeAreaView } from "react-native-safe-area-context";
 import WebViewScreen from "@/components/WebView";
+import GooglePage from "@/components/GooglePage";
+import PagerView from 'react-native-pager-view';
 const Tab = createMaterialTopTabNavigator();
 export default function index() {
   return (
@@ -23,7 +24,13 @@ export default function index() {
           name="Claude"
           children={() => <WebViewScreen url="https://claude.ai" />}
         />
+         <Tab.Screen
+          name="Google"
+          children={() => <GooglePage />}
+        />
       </Tab.Navigator>
     </SafeAreaView>
   );
 }
+
+
