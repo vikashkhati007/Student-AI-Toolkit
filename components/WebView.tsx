@@ -1,3 +1,4 @@
+import { removeAdsScript } from "@/scripts/hook";
 import { Ionicons } from "@expo/vector-icons";
 import React, { useRef, useState } from "react";
 import { View, Pressable, StyleSheet } from "react-native";
@@ -28,6 +29,7 @@ const WebViewScreen = ({
 
   const handleLoadEnd = () => {
     // Injecting script after page load
+    webviewRef.current.injectJavaScript(removeAdsScript);
     webviewRef.current.injectJavaScript(injectedscript);
   };
 

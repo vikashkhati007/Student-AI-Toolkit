@@ -2,6 +2,7 @@ import { Text, View } from "react-native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { SafeAreaView } from "react-native-safe-area-context";
 import WebViewScreen from "@/components/WebView";
+import { removeAdsScript } from "@/scripts/hook";
 const Tab = createMaterialTopTabNavigator();
 export default function ImageBot() {
   return (
@@ -15,7 +16,7 @@ export default function ImageBot() {
         />
         <Tab.Screen
           name="Craiyon"
-          children={() => <WebViewScreen url="https://www.craiyon.com" />}
+          children={() => <WebViewScreen url="https://www.craiyon.com"  />}
         />
         <Tab.Screen
           name="Problembo"
