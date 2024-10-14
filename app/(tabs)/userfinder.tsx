@@ -2,6 +2,7 @@ import { Text, View } from "react-native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { SafeAreaView } from "react-native-safe-area-context";
 import WebViewScreen from "@/components/WebView";
+import WebBrowserComponent from "@/components/WebBrowser";
 const Tab = createMaterialTopTabNavigator();
 
 const unlockScript = `
@@ -39,8 +40,9 @@ const unlockScript = `
 
 export default function UserFinderBot() {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <Tab.Navigator>
+    <SafeAreaView style={{ flex: 1}}>
+      <Tab.Navigator 
+      >
         <Tab.Screen
           name="FireShip"
           children={() => (

@@ -8,25 +8,14 @@
       "developmentClient": true,
       "distribution": "internal"
     },
-    "development-simulator": {
-      "developmentClient": true,
-      "distribution": "internal",
-      "android": {
-        "buildType": "apk"
-      }
-    },
-    "development-simulator-no-expo": {
-      "developmentClient": false,
-      "distribution": "internal",
-      "android": {
-        "buildType": "apk"
-      }
-    },
     "preview": {
       "distribution": "internal"
     },
     "production": {
-      "autoIncrement": true
+      "autoIncrement": true,
+      "android": {
+        "buildType": "apk"
+      }
     }
   },
   "submit": {
