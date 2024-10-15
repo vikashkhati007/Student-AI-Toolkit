@@ -4,7 +4,7 @@ import WebViewScreen from "@/components/WebView";
 import { leecodepremiumQuestionBlock, unlockScript } from "@/scripts/hook";
 const Tab = createMaterialTopTabNavigator();
 
-export default function UserFinderBot() {
+export default function CodingPage() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Tab.Navigator>

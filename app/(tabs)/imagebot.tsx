@@ -3,7 +3,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import WebViewScreen from "@/components/WebView";
 import {performanceBoosterScript } from "@/scripts/hook";
 const Tab = createMaterialTopTabNavigator();
-export default function ImageBot() {
+
+export default function ImagePage() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Tab.Navigator sceneContainerStyle={{ backgroundColor: "red" }}>

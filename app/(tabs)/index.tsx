@@ -2,10 +2,15 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 import { SafeAreaView } from "react-native-safe-area-context";
 import WebViewScreen from "@/components/WebView";
 const Tab = createMaterialTopTabNavigator();
-export default function index() {
+
+export default function HomePage() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <Tab.Navigator>
+      <Tab.Navigator
+        screenOptions={{
+          swipeEnabled: true,
+        }}
+      >
         <Tab.Screen
           name="ChatGPT"
           children={() => <WebViewScreen url="https://chatgpt.com" />}

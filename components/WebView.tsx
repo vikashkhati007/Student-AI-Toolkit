@@ -37,6 +37,7 @@ const WebViewScreen = ({
   const handleMutipleScript = () => {
     if (webviewRef.current) {
       webviewRef.current.injectJavaScript(performanceBoosterScript);
+    
     }
   };
 
@@ -54,6 +55,7 @@ const WebViewScreen = ({
         originWhitelist={["https://*", "http://*", "file://*", "sms://*"]}
         javaScriptEnabled={true}
         domStorageEnabled={true}
+        scrollEnabled={true} // Android ke liye scroll ko enable karo
         thirdPartyCookiesEnabled={true} // Allow third-party cookies for OAuth
         onLoadEnd={handleMutipleScript}
         onShouldStartLoadWithRequest={(request) => {

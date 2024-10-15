@@ -3,7 +3,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import WebViewScreen from "@/components/WebView";
 const Tab = createMaterialTopTabNavigator();
 
-export default function UserFinderBot() {
+export default function VideoPage() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Tab.Navigator>
