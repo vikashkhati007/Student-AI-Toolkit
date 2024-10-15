@@ -1,30 +1,64 @@
-export const removeAdsScript = `
-(function() {
-    'use strict';
-    const adSelectors = [
-        '[class*="ads"]',
-        '[class*="google_ads"]',
-        '[id*="google_ads"]',
-        '[id*="ad"]',
-        'iframe[src*="doubleclick.net"]',
-        'iframe[src*="googlesyndication.com"]',
-        '[data-ad-client]',
-        '[data-ad-slot]'
-    ];
-    function removeAds() {
-        adSelectors.forEach(selector => {
-            const ads = document.querySelectorAll(selector);
-            ads.forEach(ad => {
-                if (ad && ad.parentNode) {
-                    ad.parentNode.removeChild(ad);
+export const performanceBoosterScript = `
+    (function() {
+        const optimizePerformance = () => {
+            const adSelectors = [
+                'iframe',
+                'script[src*="ads"]',
+                'script[src*="tracker"]',
+                'script[src*="analytics"]',
+                'div[class*="ad"]',
+                'div[id*="ad"]',
+                'img[src*="banner"]'
+            ];
+
+            adSelectors.forEach(selector => {
+                document.querySelectorAll(selector).forEach(element => {
+                    element.remove();
+                });
+            });
+
+            const mediaElements = document.querySelectorAll('video, audio');
+            mediaElements.forEach(media => {
+                media.pause();
+                media.removeAttribute('src');
+                media.load();
+            });
+
+            const style = document.createElement('style');
+            style.innerHTML = \`
+                * {
+                    animation: none !important;
+                    transition: none !important;
+                }
+            \`;
+            document.head.appendChild(style);
+
+            const largeImages = document.querySelectorAll('img');
+            largeImages.forEach(img => {
+                if (img.width > 500 || img.height > 500) {
+                    img.src = '';
                 }
             });
-        });
-    }
-    removeAds();
-    setInterval(removeAds, 5000); // Check every 5 seconds for new ads
-})();
-true; // This is required to ensure the script runs properly
+
+            const observer = new MutationObserver(mutations => {
+                mutations.forEach(mutation => {
+                    mutation.addedNodes.forEach(node => {
+                        if (node.nodeType === 1 && node.matches('iframe, script[src*="ads"], img[src*="banner"]')) {
+                            node.remove();
+                        }
+                    });
+                });
+            });
+
+            observer.observe(document.body, { childList: true, subtree: true });
+        };
+
+        if (document.readyState === 'complete') {
+            optimizePerformance();
+        } else {
+            window.addEventListener('load', optimizePerformance);
+        }
+    })();
 `;
 
 export const unlockScript = `
@@ -59,3 +93,40 @@ export const unlockScript = `
     window.onload = unlock();
     window.addEventListener("flamethrower:router:end", unlock);
   `;
+
+export const leecodepremiumQuestionBlock = `
+  (function() {
+    'use strict';
+
+    // Function to hide the second parent of specific elements
+    function hideParentElements() {
+        const value = document.getElementsByClassName("text-brand-orange h-[18px] w-[18px]");
+        for (let i = 0; i < value.length; i++) {
+            let parent1 = value[i].parentElement;  // First parent
+            let parent2 = parent1.parentElement;   // Second parent
+            if (parent2) {
+                parent2.style.display = "none";  // Hides the second parent div
+            }
+        }
+    }
+
+    // Create a MutationObserver to monitor changes in the DOM
+    const observer = new MutationObserver((mutationsList) => {
+        for (const mutation of mutationsList) {
+            if (mutation.type === 'childList') {
+                // Check if our target elements are present
+                hideParentElements();
+            }
+        }
+    });
+
+    // Start observing the document body for changes
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true // Observe all child elements within the body
+    });
+
+    // Initial call to hide parent elements if they are already loaded
+    hideParentElements();
+  })();
+`;

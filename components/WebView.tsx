@@ -1,8 +1,8 @@
-import { removeAdsScript } from "@/scripts/hook";
-import { Ionicons } from "@expo/vector-icons";
-import React, { useRef, useState } from "react";
+import { performanceBoosterScript } from "@/scripts/hook";
+import React, { useEffect, useRef, useState } from "react";
 import { View, Pressable, StyleSheet } from "react-native";
 import { WebView } from "react-native-webview";
+import { BackHandler } from "react-native";
 
 const WebViewScreen = ({
   url,
@@ -14,23 +14,30 @@ const WebViewScreen = ({
   const webviewRef = useRef<any>(null);
   const [canGoBack, setCanGoBack] = useState(false);
 
+  // Inside your component
+  useEffect(() => {
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      () => {
+        if (webviewRef.current && canGoBack) {
+          webviewRef.current.goBack();
+          return true; // Prevent default behavior (exit app)
+        }
+        return false; // Default behavior (exit app)
+      }
+    );
+
+    return () => backHandler.remove(); // Cleanup the event listener
+  }, [canGoBack]);
+
   const handleNavigationStateChange = (navState: any) => {
     setCanGoBack(navState.canGoBack);
   };
 
-  const handleBackPress = () => {
-    if (canGoBack) {
-      webviewRef.current.goBack();
-    } else {
-      // Handle app navigation if there's no page to go back to
-      // e.g., navigation.goBack() or other logic
+  const handleMutipleScript = () => {
+    if (webviewRef.current) {
+      webviewRef.current.injectJavaScript(performanceBoosterScript);
     }
-  };
-
-  const handleLoadEnd = () => {
-    // Injecting script after page load
-    webviewRef.current.injectJavaScript(removeAdsScript);
-    webviewRef.current.injectJavaScript(injectedscript);
   };
 
   return (
@@ -41,24 +48,18 @@ const WebViewScreen = ({
         source={{ uri: url }}
         onNavigationStateChange={handleNavigationStateChange}
         startInLoadingState
-        onLoadEnd={handleLoadEnd}
+        injectedJavaScript={injectedscript}
         allowsFullscreenVideo
         userAgent="Mozilla/5.0 (Linux; Android 10; Pixel 3 XL) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36"
         originWhitelist={["https://*", "http://*", "file://*", "sms://*"]}
         javaScriptEnabled={true}
         domStorageEnabled={true}
         thirdPartyCookiesEnabled={true} // Allow third-party cookies for OAuth
+        onLoadEnd={handleMutipleScript}
         onShouldStartLoadWithRequest={(request) => {
           return true;
         }}
       />
-      <Pressable
-        onPress={handleBackPress}
-        disabled={!canGoBack}
-        style={styles.backButton}
-      >
-        <Ionicons name="arrow-back" size={24} color="black" />
-      </Pressable>
     </View>
   );
 };

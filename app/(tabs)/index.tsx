@@ -5,7 +5,7 @@ const Tab = createMaterialTopTabNavigator();
 export default function index() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <Tab.Navigator sceneContainerStyle={{ backgroundColor: "red" }}>
+      <Tab.Navigator>
         <Tab.Screen
           name="ChatGPT"
           children={() => <WebViewScreen url="https://chatgpt.com" />}

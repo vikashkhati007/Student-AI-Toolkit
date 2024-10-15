@@ -1,8 +1,8 @@
 import { Tabs } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
-import { Button, Text } from "react-native";
 import { View } from "react-native";
+import Draggable from "react-native-draggable";
 export default function TabLayout() {
   const [menu, setMenu] = useState(false);
 
@@ -12,6 +12,7 @@ export default function TabLayout() {
       setMenu(false);
     }, 4000);
   };
+
   return (
     <>
       <Tabs
@@ -52,6 +53,15 @@ export default function TabLayout() {
           }}
         />
         <Tabs.Screen
+          name="coding"
+          options={{
+            title: "",
+            tabBarIcon: ({ color }) => (
+              <Ionicons name="code-slash-outline" size={24} color={color} />
+            ),
+          }}
+        />
+        <Tabs.Screen
           name="userfinder"
           options={{
             title: "",
@@ -60,27 +70,30 @@ export default function TabLayout() {
             ),
           }}
         />
-    
       </Tabs>
       {!menu ? (
-          <View
-            style={{
-              width: 50, // Width of the circular button
-              height: 50, // Height of the circular button
-              position: "absolute",
-              left: 5, // Position from left
-              bottom: 5,
-              backgroundColor: "white", // Grey background
-              borderRadius: 25, // Fully rounded corners
-              justifyContent: "center", // Center the icon vertically
-              alignItems: "center", // Center the icon horizontally
-              borderColor: "grey", // Black border
-              borderWidth: 1, // 1px border width
-            
-            }}
-          >
-            <Ionicons size={25} color={"black"} name="grid-outline" onPress={handleClick} />
-          </View>
+          <Draggable x={0} y={600} >
+            <View
+              style={{
+                position: "absolute", // Position it absolutely
+                width: 50, // Width of the circular button
+                height: 50, // Height of the circular button
+                backgroundColor: "white", // Grey background
+                borderRadius: 25, // Fully rounded corners
+                justifyContent: "center", // Center the icon vertically
+                alignItems: "center", // Center the icon horizontally
+                borderColor: "grey", // Black border
+                borderWidth: 1, // 1px border width
+              }}
+            >
+              <Ionicons
+              onPress={handleClick}
+                size={25}
+                color={"black"}
+                name="grid-outline"
+              />
+            </View>
+          </Draggable>
       ) : null}
     </>
   );
