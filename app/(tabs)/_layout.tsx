@@ -1,13 +1,13 @@
-import { FontAwesome, Ionicons } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
 import { View } from "react-native";
 import Draggable from "react-native-draggable";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomePage from ".";
 import CodingPage from "./coding";
-import ImagePage from "./imagebot";
-import VideoPage from "./videobot";
 import PremiumPage from "./premium";
+import CreativePage from "./creative";
+import JobPage from "./job";
 
 const Tab = createBottomTabNavigator();
 
@@ -54,22 +54,22 @@ export default function TabLayout() {
           }}
         />
         <Tab.Screen
-          name="Image"
-          component={ImagePage}
+          name="Creative"
+          component={CreativePage}
           options={{
             title: "",
             tabBarIcon: ({ color }) => (
-              <Ionicons name="image" size={24} color={color} />
+              <Ionicons name="create" size={24} color={color} />
             ),
           }}
         />
         <Tab.Screen
-          name="Video"
-          component={VideoPage}
+          name="Job"
+          component={JobPage}
           options={{
             title: "",
             tabBarIcon: ({ color }) => (
-              <Ionicons name="videocam" size={24} color={color} />
+              <Ionicons name="search" size={24} color={color} />
             ),
           }}
         />
