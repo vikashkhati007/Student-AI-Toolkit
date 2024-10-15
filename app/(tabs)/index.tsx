@@ -16,16 +16,16 @@ export default function HomePage() {
           children={() => <WebViewScreen url="https://chatgpt.com" />}
         />
         <Tab.Screen
-          name="Perplexity"
-          children={() => <WebViewScreen url="https://www.perplexity.ai" />}
+          name="Natural Readers"
+          children={() => <WebViewScreen url="https://www.naturalreaders.com/online/" />}
         />
         <Tab.Screen
-          name="Morphic"
-          children={() => <WebViewScreen url="https://www.morphic.sh" />}
+          name="ChatPDF"
+          children={() => <WebViewScreen url="https://www.chatpdf.com/" />}
         />
         <Tab.Screen
-          name="Claude"
-          children={() => <WebViewScreen url="https://claude.ai" />}
+          name="Resume Maker"
+          children={() => <WebViewScreen url="https://www.resume.com/" />}
         />
       </Tab.Navigator>
     </SafeAreaView>

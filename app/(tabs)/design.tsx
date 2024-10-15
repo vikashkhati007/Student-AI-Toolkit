@@ -9,21 +9,8 @@ export default function CodingPage() {
     <SafeAreaView style={{ flex: 1 }}>
       <Tab.Navigator>
         <Tab.Screen
-          name="LeetCode"
-          children={() => (
-            <WebViewScreen
-              url="https://leetcode.com/problemset/"
-              injectedscript={leecodepremiumQuestionBlock}
-            />
-          )}
-        />
-        <Tab.Screen
-          name="CodeWars"
-          children={() => <WebViewScreen url="https://www.codewars.com/" />}
-        />
-        <Tab.Screen
-          name="HackerRank"
-          children={() => <WebViewScreen url="https://www.hackerrank.com/" />}
+          name="Canva"
+          children={() => <WebViewScreen url="https://www.canva.com/" />}
         />
       </Tab.Navigator>
     </SafeAreaView>
