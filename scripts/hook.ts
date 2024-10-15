@@ -130,3 +130,28 @@ export const leecodepremiumQuestionBlock = `
     hideParentElements();
   })();
 `;
+
+
+export const chatPDFuselessCodeBlock = `
+const observer = new MutationObserver((mutations) => {
+  let obj = document.getElementsByClassName("translate");
+  if (obj[3] && obj[3].offsetParent !== null) { // Check if the element is displayed
+    obj[3].style.display = "none"; // Hides the fourth element
+    observer.disconnect(); // Stop observing after hiding
+  }
+});
+
+observer.observe(document.body, {
+  childList: true,
+  subtree: true,
+});
+
+// Initial check in case the element is already present
+let obj = document.getElementsByClassName("translate");
+if (obj[3] && obj[3].offsetParent !== null) {
+  obj[3].style.display = "none"; // Hides the fourth element
+  observer.disconnect(); // Stop observing after hiding
+}
+
+true; // Required to indicate successful execution
+`;

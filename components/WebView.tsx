@@ -30,14 +30,13 @@ const WebViewScreen = ({
     return () => backHandler.remove(); // Cleanup the event listener
   }, [canGoBack]);
 
-
   const handleMutipleScript = () => {
     if (webviewRef.current) {
-      // webviewRef.current.injectJavaScript(performanceBoosterScript);
+      webviewRef.current.injectJavaScript(performanceBoosterScript);
     }
   };
 
-  const handleNavigationStateChange = (navState:any) => {
+  const handleNavigationStateChange = (navState: any) => {
     setCanGoBack(navState.canGoBack);
   };
 
