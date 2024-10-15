@@ -12,6 +12,10 @@ export default function CodingPage() {
           name="Canva"
           children={() => <WebViewScreen url="https://www.canva.com/" />}
         />
+        <Tab.Screen
+          name="Resume Maker"
+          children={() => <WebViewScreen url="https://www.resume.com/" />}
+        />
       </Tab.Navigator>
     </SafeAreaView>
   );

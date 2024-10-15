@@ -30,15 +30,15 @@ const WebViewScreen = ({
     return () => backHandler.remove(); // Cleanup the event listener
   }, [canGoBack]);
 
-  const handleNavigationStateChange = (navState: any) => {
-    setCanGoBack(navState.canGoBack);
-  };
 
   const handleMutipleScript = () => {
     if (webviewRef.current) {
-      webviewRef.current.injectJavaScript(performanceBoosterScript);
-    
+      // webviewRef.current.injectJavaScript(performanceBoosterScript);
     }
+  };
+
+  const handleNavigationStateChange = (navState:any) => {
+    setCanGoBack(navState.canGoBack);
   };
 
   return (
@@ -58,9 +58,7 @@ const WebViewScreen = ({
         scrollEnabled={true} // Android ke liye scroll ko enable karo
         thirdPartyCookiesEnabled={true} // Allow third-party cookies for OAuth
         onLoadEnd={handleMutipleScript}
-        onShouldStartLoadWithRequest={(request) => {
-          return true;
-        }}
+        cacheEnabled={true}
       />
     </View>
   );
