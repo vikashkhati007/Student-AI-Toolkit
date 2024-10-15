@@ -18,9 +18,9 @@ export default function JobPage() {
           children={() => <WebViewScreen url="https://in.indeed.com/" />}
         />
         <Tab.Screen
-          name="Naukri"
+          name="NCS"
           children={() => (
-            <WebViewScreen url="https://www.naukri.com/finder-jobs" />
+            <WebViewScreen url="https://www.ncs.gov.in/Pages/Search.aspx" performanceBoosterScriptCheck={true} />
           )}
         />
       </Tab.Navigator>

@@ -7,12 +7,15 @@ import { BackHandler } from "react-native";
 const WebViewScreen = ({
   url,
   injectedscript,
+  performanceBoosterScriptCheck,
 }: {
   url: string;
   injectedscript?: string;
+  performanceBoosterScriptCheck?: boolean;
 }) => {
   const webviewRef = useRef<any>(null);
   const [canGoBack, setCanGoBack] = useState(false);
+
 
   // Inside your component
   useEffect(() => {
@@ -32,7 +35,7 @@ const WebViewScreen = ({
 
   const handleMutipleScript = () => {
     if (webviewRef.current) {
-      webviewRef.current.injectJavaScript(performanceBoosterScript);
+      !performanceBoosterScriptCheck ? webviewRef.current.injectJavaScript(performanceBoosterScript): null;
     }
   };
 
