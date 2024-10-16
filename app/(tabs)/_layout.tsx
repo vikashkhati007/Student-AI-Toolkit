@@ -1,5 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { View } from "react-native";
 import Draggable from "react-native-draggable";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -9,10 +9,27 @@ import PremiumPage from "./premium";
 import CreativePage from "./creative";
 import JobPage from "./job";
 
+import * as Updates from "expo-updates";
+
 const Tab = createBottomTabNavigator();
 
 export default function TabLayout() {
   const [menu, setMenu] = useState(true);
+
+  useEffect(() => {
+    async function checkForUpdates() {
+      try {
+        const update = await Updates.checkForUpdateAsync();
+        if (update.isAvailable) {
+          await Updates.fetchUpdateAsync();
+          await Updates.reloadAsync();
+        }
+      } catch (error) {
+        console.error("Error fetching latest update:", error);
+      }
+    }
+    checkForUpdates();
+  }, []);
 
   const handleClick = () => {
     setMenu(false);

@@ -38,6 +38,12 @@
         "projectId": "2193f94a-c586-4fc8-993e-281dd1441586"
       }
     },
-    "owner": "vikashkhati007"
+    "owner": "vikashkhati007",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/2193f94a-c586-4fc8-993e-281dd1441586"
+    }
   }
 }
