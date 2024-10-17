@@ -1,4 +1,4 @@
-Access All Ai Apps thorugh one App , Install Today 😊
+Student All In One Apk Ai Tools (Edition), Install Today 😊
 
 Features Like:
 ChatsBot Tools
