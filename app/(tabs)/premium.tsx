@@ -18,6 +18,24 @@ export default function PremiumPage() {
             />
           )}
         />
+        <Tab.Screen
+          name="Code Academy"
+          children={() => (
+            <WebViewScreen
+              url="https://www.codecademy.com/"
+              injectedscript={unlockScript}
+            />
+          )}
+        />
+          <Tab.Screen
+          name="EDX"
+          children={() => (
+            <WebViewScreen
+              url="https://www.edx.org/"
+              injectedscript={unlockScript}
+            />
+          )}
+        />
       </Tab.Navigator>
     </SafeAreaView>
   );

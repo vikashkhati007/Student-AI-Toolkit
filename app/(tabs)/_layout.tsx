@@ -66,6 +66,7 @@ export default function TabLayout() {
           component={CodingPage}
           options={{
             title: "",
+            tabBarIconStyle: {color: "white"},
             tabBarIcon: ({ color }) => (
               <Ionicons name="code" size={24} color={color} />
             ),
