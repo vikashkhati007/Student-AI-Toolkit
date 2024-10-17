@@ -10,6 +10,7 @@ import CreativePage from "./creative";
 import JobPage from "./job";
 
 import * as Updates from "expo-updates";
+import SocialPage from "./social";
 
 const Tab = createBottomTabNavigator();
 
@@ -87,6 +88,16 @@ export default function TabLayout() {
             title: "",
             tabBarIcon: ({ color }) => (
               <Ionicons name="search" size={24} color={color} />
+            ),
+          }}
+        />
+         <Tab.Screen
+          name="Social"
+          component={SocialPage}
+          options={{
+            title: "",
+            tabBarIcon: ({ color }) => (
+              <Ionicons name="share-social" size={24} color={color} />
             ),
           }}
         />

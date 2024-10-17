@@ -1,4 +1,3 @@
-import { performanceBoosterScript } from "@/scripts/hook";
 import React, { useEffect, useRef, useState } from "react";
 import { View, Pressable, StyleSheet } from "react-native";
 import { WebView } from "react-native-webview";
@@ -7,11 +6,9 @@ import { BackHandler } from "react-native";
 const WebViewScreen = ({
   url,
   injectedscript,
-  performanceBoosterScriptCheck,
 }: {
   url: string;
   injectedscript?: string;
-  performanceBoosterScriptCheck?: boolean;
 }) => {
   const webviewRef = useRef<any>(null);
   const [canGoBack, setCanGoBack] = useState(false);
@@ -35,7 +32,6 @@ const WebViewScreen = ({
 
   const handleMutipleScript = () => {
     if (webviewRef.current) {
-      !performanceBoosterScriptCheck ? webviewRef.current.injectJavaScript(performanceBoosterScript): null;
     }
   };
 
